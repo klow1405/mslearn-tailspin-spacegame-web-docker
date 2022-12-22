@@ -31,7 +31,7 @@ stages:
   displayName: 'Deploy the container'
   dependsOn: Build
   jobs:
-  - deployment: Deploy
+  - job: 'Deploy'
     displayName: 'Deploy job'
     pool:
       vmImage: 'ubuntu-20.04'
@@ -40,6 +40,6 @@ stages:
     steps:
     - task: AzureWebAppContainer@1
       inputs:
-        appName: $(WepAppName)
-        azureSubscription: 'Resource Manager - Tailspin - Space Game'
-        imageName: $(RegistryName)/$(webRepository):$(build.buildId)
+       appName: $(WebAppName)
+       azureSubscription: 'Resource Manager - Tailspin - Space Game'
+       imageName: $(RegistryName)/$(webRepository):$(build.buildId)
